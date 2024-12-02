@@ -19,4 +19,5 @@ public interface HouseHoldService {
 
     HouseHold createHousehold(HouseHold household);
 
+    String getStatistics();
 }

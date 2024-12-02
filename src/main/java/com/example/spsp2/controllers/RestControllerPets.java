@@ -4,12 +4,11 @@ import com.example.spsp2.entities.HouseHold;
 import com.example.spsp2.entities.Pet;
 import com.example.spsp2.services.HouseHoldService;
 import com.example.spsp2.services.PetService;
+import com.example.spsp2.services.exceptions.BadDataException;
 import com.example.spsp2.services.exceptions.NotFoundException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +32,16 @@ public class RestControllerPets {
     void deletePet(@PathVariable("id") long id){
         petService.deletePetById(id);
     }
+
+    @PostMapping({"", "/"})
+    Pet createPet(@RequestBody @Valid Pet pet) throws BadDataException {
+        return petService.createPet(pet);
+    }
+
+    @GetMapping("/statistics")
+    String getStatistics() {
+        return petService.getStatistics();
+    }
+
 }
 

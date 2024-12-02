@@ -2,14 +2,12 @@ package com.example.spsp2.services;
 
 import com.example.spsp2.dao.HouseHoldRepository;
 import com.example.spsp2.entities.HouseHold;
-import com.example.spsp2.entities.Pet;
 import com.example.spsp2.services.exceptions.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -54,5 +52,12 @@ public class HouseHoldServiceImpl implements HouseHoldService {
     @Override
     public HouseHold createHousehold(HouseHold household) {
         return houseHoldRepository.save(household);
+    }
+
+    @Override
+    public String getStatistics() {
+        long totalHouseholds = houseHoldRepository.count();
+        long uninhabitedHouseholds = houseHoldRepository.countByNumberOfOccupants(0);
+        return String.format("Total Households: %d, Uninhabited Households: %d", totalHouseholds, uninhabitedHouseholds);
     }
 }

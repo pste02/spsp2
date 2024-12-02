@@ -14,4 +14,7 @@ public interface HouseHoldRepository extends JpaRepository<HouseHold, String> {
 
     @Query("SELECT h from HouseHold h where h.pets IS EMPTY ")
     List<HouseHold> findListOfHouseholdsWithNoPets();
+
+    @Query("SELECT COUNT(h) FROM HouseHold h WHERE h.numberOfOccupants = :numberOfOccupants")
+    long countByNumberOfOccupants(int numberOfOccupants);
 }
