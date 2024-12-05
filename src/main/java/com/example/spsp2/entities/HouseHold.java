@@ -13,7 +13,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "household")
-@AllArgsConstructor
 @NoArgsConstructor
 public class HouseHold {
     @Id
@@ -28,4 +27,10 @@ public class HouseHold {
     @ToString.Exclude
     @JsonManagedReference
     private List<Pet> pets;
+    public HouseHold(String eircode, int numberOfOccupants, int max_numberOfOccupants, Boolean ownerOccupied){
+        this.eircode = eircode;
+        this.numberOfOccupants = numberOfOccupants;
+        this.max_numberOfOccupants = max_numberOfOccupants;
+        this.ownerOccupied = ownerOccupied;
+    }
 }

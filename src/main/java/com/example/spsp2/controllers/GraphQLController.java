@@ -57,7 +57,7 @@ public class GraphQLController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     @MutationMapping
     public HouseHold createHousehold(@Argument @Valid HouseHold input) {
-        return householdService.createHousehold(new HouseHold(input.getEircode(), input.getNumberOfOccupants(), input.getMax_numberOfOccupants(), input.getOwnerOccupied(), new ArrayList<>()));
+        return householdService.createHousehold(new HouseHold(input.getEircode(), input.getNumberOfOccupants(), input.getMax_numberOfOccupants(), input.getOwnerOccupied()));
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")

@@ -3,6 +3,7 @@ package com.example.spsp2;
 import com.example.spsp2.entities.HouseHold;
 import com.example.spsp2.services.HouseHoldService;
 import com.example.spsp2.services.HouseHoldServiceImpl;
+import com.example.spsp2.services.PetService;
 import com.example.spsp2.services.exceptions.NotFoundException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,8 @@ public class Spsp2Application {
 		System.out.println(houseHoldService.findHouseholdByEircode("D02XY45"));
 		System.out.println(houseHoldService.findHouseholdByEircodeWithPets("D02XY45").getPets());
 		System.out.println(houseHoldService.findListOfHouseholdsWithNoPets());
+		PetService petService = applicationContext.getBean(PetService.class);
+		System.out.println(petService.readAllPets());
 
 	}
 }

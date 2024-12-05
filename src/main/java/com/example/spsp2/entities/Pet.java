@@ -33,6 +33,11 @@ public class Pet {
     @JsonBackReference
     @NotNull
     private HouseHold houseHold;
-
-
+    public Pet(String name, String animalType, String breed, int age, HouseHold houseHold) {
+        this.name = name;
+        this.animalType = animalType;
+        this.breed = breed;
+        this.age = age;
+        this.houseHold = houseHold;
+    }
 }
